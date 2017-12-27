@@ -1,3 +1,10 @@
+## Usage
+
+    gulp build && npm start
+
+------
+
+
 <h3 align="center">
   <img src="assets/red5pro_logo.png" alt="Red5 Pro Logo" />
 </h3>

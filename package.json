@@ -25,6 +25,7 @@
     "gulp": "^3.9.1",
     "gulp-bump": "^2.4.0",
     "gulp-compile-handlebars": "^0.6.1",
+    "gulp-nodemon": "^2.2.1",
     "gulp-rename": "^1.2.2"
   },
   "scripts": {
@@ -35,5 +36,10 @@
     "predist": "npm run clean:dist",
     "dist": "gulp bump-version && NODE_ENV=production gulp build",
     "dist:webapp": "NODE_ENV=production gulp build:webapp"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "https": "^1.0.0",
+    "static-server": "^2.0.6"
   }
 }

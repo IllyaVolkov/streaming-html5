@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var bump = require('gulp-bump');
 var handlebars = require('gulp-compile-handlebars');
 var mkdir = require('mkdirp');
+var nodemon = require('nodemon');
 
 var pkg = path.join(__dirname, 'package.json');
 var version = require(pkg).version;
@@ -66,4 +67,20 @@ gulp.task('bump-version', function() {
         type: versionType
       }))
       .pipe(gulp.dest(__dirname));
+});
+
+gulp.task('start', function () {
+    var stream = nodemon({ script: 'server.js'
+        , ext: 'html js'
+        , ignore: ['ignored.js']
+        , tasks: ['build'] })
+
+    stream
+        .on('restart', function () {
+            console.log('restarted!')
+        })
+        .on('crash', function() {
+            console.error('Application has crashed!\n')
+            stream.emit('restart', 10)  // restart the server in 10 seconds
+        })
 });
