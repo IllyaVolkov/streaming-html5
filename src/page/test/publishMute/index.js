@@ -135,7 +135,9 @@
       streamTitle.innerText = configuration.stream1;
       targetPublisher = publisherImpl;
       targetPublisher.on('*', onPublisherEvent);
-      return targetPublisher.publish();
+      return targetPublisher.publish().then(() => {
+          targetPublisher.muteAudio();
+      });
     })
     .then(function () {
       addMuteListener(targetPublisher);
